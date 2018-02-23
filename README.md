@@ -21,7 +21,7 @@ However, because our data is sensitive and we need to remain HIPAA compliant, I 
 
 I wanted a dataset that was large enough that we would need to link tables, 
 
-download from Kaggle
+download from Kaggle https://www.kaggle.com/hugomathien/soccer
 
 ### Dataset manipulation
 
@@ -37,7 +37,7 @@ pgloader export sqlite db to soccer
 
 SQLite DB
 
-all of the tables worked except 'players'
+pgloder played nice with all of the tables except 'players'
 
 changed csv data in height column to be an integer, deleted top row of csv
 
@@ -46,6 +46,8 @@ this gist for last table https://gist.github.com/nepsilon/f2937fe10fe8b0efc0cc
 actual command
 
 pg dump https://www.postgresql.org/docs/9.1/static/app-pgdump.html
+
+pg_dump soccer > soccer_db.sql
 
 now the soccer postgres db was running on my local machine
 
