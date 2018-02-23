@@ -1,6 +1,7 @@
 # Business Intelligence Tool Test
 
 ## Context
+Skip to the [Dataset](#Dataset) section if you are only interested in running your own sample tests.
 
 ### Our current process
 currently running a Postgresql database, most of the analytics is done by:
@@ -13,7 +14,7 @@ currently running a Postgresql database, most of the analytics is done by:
 
 This process informs our criteria for a BI tool.
 
-## Dataset for the test
+## Dataset
 Ideally, we would link our exisiting databases to a variety of BI tools and test them directly in the workplace with real data.
 
 However, because our data is sensitive and we need to remain HIPAA compliant, I had to grab some fake data to test.
