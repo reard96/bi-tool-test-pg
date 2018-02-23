@@ -1,7 +1,7 @@
 # Business Intelligence Tool Test
 
 ## Context
-Skip to the [Dataset](#Dataset) section if you are only interested in running your own sample tests.
+Skip to the [Dataset](#Dataset) BOLD section if you are only interested in running your own sample tests.
 
 ### Our current process
 currently running a Postgresql database, most of the analytics is done by:
