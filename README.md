@@ -94,9 +94,9 @@ When I first attempted to connect, I got an error that SSL was not enabled on my
     chmod 600 cert.pem
     chmod 600 cert.cert
     ```
-6. Open your *`posgresql.conf`* file (again found in "Server Settings") and uncomment and change these 3 lines of code:
+6. Open your *`posgresql.conf`* file (again found in "Server Settings"). Change & uncomment the code in the 'Security and Authentication' section to match the following:
     ```
-    ssl=on
+    ssl = on
     ssl_cert_file = 'cert.cert'
     ssl_key_file = 'cert.pem'
     ```
