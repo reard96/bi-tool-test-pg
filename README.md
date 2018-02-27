@@ -1,4 +1,5 @@
-# Business Intelligence Tool Test
+# Business Intelligence Tool Test Setup
+#### How to set up a locally hosted Postgres DB populated with useful public data, then connect a BI tool to your DB.
 
 ## Business Context
 *Skip to the **Dataset** section if you are only interested in the setup process.*
@@ -37,7 +38,7 @@ I wanted a dataset that was large enough that we would need to link tables, but 
 
 [This is the dataset I used](https://www.kaggle.com/hugomathien/soccer). It is a SQLite database of European Professional Football (i.e. soccer) matches, players, and teams.
 
-### Dataset manipulation
+### Database setup
 
 #### The easy way to do this
 Because I've manipulated all of this data already, you can import my dump of the Postgres DB. 
