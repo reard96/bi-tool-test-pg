@@ -40,12 +40,14 @@ I wanted a dataset that was large enough that we would need to link tables, but 
 ### Dataset manipulation
 
 #### The easy way to do this
-Because I've manipulated all of this data already, I've made it easy for you. Make sure Postgres is running, then download the `data.zip` file from this repo. Navigate to the file directory and run: 
+Because I've manipulated all of this data already, you can import my dump of the Postgres DB. 
+
+Make sure Postgres is running, then download the *`data.zip`* file from this repo. Navigate to the file directory and run: 
 
 ```psql your_created_DB_name < soccer_db.sql```
 
 #### From scratch
-I downloaded the data from Kaggle, which gave me a `.sqlite` file. 
+I downloaded the data from Kaggle, which gave me a *`.sqlite`* file. 
 
 I then used [DB Browser for SQLite](http://sqlitebrowser.org/) to visualize the data structures. I also used this tool to export all of the tables to CSV - convenient if you'd rather explore the data in Excel.
 
@@ -56,26 +58,20 @@ From there, I used [pgloader](https://github.com/dimitri/pgloader) to migrate th
 * Install pgloader: `brew install pgloader`
 * Export your SQLite DB to Postgres: `pgloader ./path/to/sqlite.db postgresql:///soccer`
 
-pgloader played nice with all of the DB tables except 'players'. For players, I went into the 
+pgloader played nice with all of the DB tables except 'player'. For this table, I went into the *`Player.csv`* file. I changed the data in the *'height'* column to be integers and deleted the top row (headers) of the CSV.
 
-changed csv data in height column to be an integer, deleted top row of csv
+I then used [this gist](https://gist.github.com/nepsilon/f2937fe10fe8b0efc0cc) to import the *`Player.csv`* file into the blank table in my Postgres DB.
 
-this gist for last table https://gist.github.com/nepsilon/f2937fe10fe8b0efc0cc
+Once my Postgres DB was built, I ran `pg_dump` [to dump the results into a *`.sql`* file](https://www.postgresql.org/docs/9.1/static/app-pgdump.html).
 
-actual command
-
-pg dump https://www.postgresql.org/docs/9.1/static/app-pgdump.html
-
-pg_dump soccer > soccer_db.sql
-
-now the soccer postgres db was running on my local machine
-
-The `.sql` dump, `.sqlite` DB, and all of the `.csv` files are included in `data.zip`.
+The SQL dump, SQLite DB, and all of the CSV files are included in `data.zip`.
 
 ### Linking to your BI tool
 *Note that some of these instructions may be specific to [Mode Analytics](https://modeanalytics.com/), the BI tool I was testing.*
 
-Steps to link to Mode.
+I connected my DB to Mode using a [bridge connection](https://help.modeanalytics.com/articles/connect-with-bridge/).
+
+# EDIT BELOW THIS LINE
 
 ## Testing the BI tool's capabilities
 Now that you have your BI tool layered over your Postgres DB, you're ready to play with the data! Some sample tests you could run:
