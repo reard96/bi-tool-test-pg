@@ -15,7 +15,7 @@ We run a PostgreSQL database. For analytics & data requests, we generally:
 4. Create a PowerPoint deck with those charts and sending it to clients
 5. Repeat this process manually each week/month
 
-Little to no forecasting and modeling is actually done, given that analyst time is spent on data reporting (which could be 95% automated).
+Little to no forecasting and modeling is actually done, given that analyst time is spent on data reporting (which could be heavily automated).
 
 ### Ideal process
 *This process informs our criteria for selecting a BI tool.*
