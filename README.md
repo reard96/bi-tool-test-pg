@@ -1,18 +1,32 @@
 # Business Intelligence Tool Test
 
-## Context
-Skip to the [Dataset](#Dataset) BOLD section if you are only interested in running your own sample tests.
+## Business Context
+*Skip to the ***Dataset*** section if you are only interested in the setup process.*
+
+### The problem
+We need a BI tool in order to make our data reporting more robust and to remove our engineering team from analytics altogether. 
 
 ### Our current process
-currently running a Postgresql database, most of the analytics is done by:
-1) Writing queries using Navicat
-2) Exporting the results of those queries to CSV
-3) Manipulating the data and creating charts using Excel
-4) Creating a PowerPoint deck with those charts and sending it to clients
+We currently run a Postgresql database. For analytics & data requests, we generally:
+1) Write SQL queries using Navicat
+2) Export the results of those queries to CSV
+3) Manipulate the data and creating charts using Excel
+4) Create a PowerPoint deck with those charts and sending it to clients
+5) Repeat this process manually each week/month
+
+Little-to-no forecasting and modeling is actually done, given that analyst time is spent on data reporting (which could be 95% automated).
 
 ### Ideal process
+*This process informs our criteria for selecting a BI tool.*
+1) Write SQL queries from within BI tool
+2) Create charts & graphics within BI tool
+3) Queries auto-run on given cadence, charts & graphics auto-refresh
+4) Models & forecasts are created from within the BI tool, using the results of our queries as datasets
+5) Analysis can be shared with clients and/or team members through 
+  * a link to the BI tool's reports and 
+  * PDF downloads
 
-This process informs our criteria for a BI tool.
+This allows analysts to spend their time creating models (i.e. higher-level thinking), rather than simply reporting on events that have already occurred. These insights can then be productized and ***sold*** to clients.
 
 ## Dataset
 Ideally, we would link our exisiting databases to a variety of BI tools and test them directly in the workplace with real data.
