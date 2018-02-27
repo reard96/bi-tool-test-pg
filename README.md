@@ -1,57 +1,62 @@
 # Business Intelligence Tool Test
 
 ## Business Context
-*Skip to the ***Dataset*** section if you are only interested in the setup process.*
+*Skip to the **Dataset** section if you are only interested in the setup process.*
 
 ### The problem
 We need a BI tool in order to make our data reporting more robust and to remove our engineering team from analytics altogether. 
 
 ### Our current process
-We currently run a Postgresql database. For analytics & data requests, we generally:
-1) Write SQL queries using Navicat
-2) Export the results of those queries to CSV
-3) Manipulate the data and creating charts using Excel
-4) Create a PowerPoint deck with those charts and sending it to clients
-5) Repeat this process manually each week/month
+We run a Postgresql database. For analytics & data requests, we generally:
+1. Write SQL queries using Navicat
+2. Export the results of those queries to CSV
+3. Manipulate the data and creating charts using Excel
+4. Create a PowerPoint deck with those charts and sending it to clients
+5. Repeat this process manually each week/month
 
 Little-to-no forecasting and modeling is actually done, given that analyst time is spent on data reporting (which could be 95% automated).
 
 ### Ideal process
 *This process informs our criteria for selecting a BI tool.*
-1) Write SQL queries from within BI tool
-2) Create charts & graphics within BI tool
-3) Queries auto-run on given cadence, charts & graphics auto-refresh
-4) Models & forecasts are created from within the BI tool, using the results of our queries as datasets
-5) Analysis can be shared with clients and/or team members through 
-  * a link to the BI tool's reports and 
-  * PDF downloads
+1. Write SQL queries from within BI tool
+2. Create charts & graphics within BI tool
+3. Queries auto-run on given cadence, charts & graphics auto-refresh
+4. Models & forecasts are created from within the BI tool, using the results of our queries as datasets
+5. Analysis can be shared with clients and/or team members through 
+    1. a link to the BI tool's reports and 
+    2. PDF downloads
 
-This allows analysts to spend their time creating models (i.e. higher-level thinking), rather than simply reporting on events that have already occurred. These insights can then be productized and ***sold*** to clients.
+This allows analysts to spend their time creating models (i.e. higher-level thinking), rather than simply reporting on events that have already occurred. These insights can then be productized and **sold** to clients.
 
 ## Dataset
 Ideally, we would link our exisiting databases to a variety of BI tools and test them directly in the workplace with real data.
 
-However, because our data is sensitive and we need to remain HIPAA compliant, I had to grab some fake data to test.
+However, because our data is sensitive and we need to remain HIPAA compliant, I had to improvise and grab some fake data to test.
 
-I wanted a dataset that was large enough that we would need to link tables, 
+I wanted a dataset that was large enough that we would need to link tables, but small enough to easily understand and run on a local machine.
 
-download from Kaggle https://www.kaggle.com/hugomathien/soccer
+[This is the dataset I used](https://www.kaggle.com/hugomathien/soccer). It is a SQLite database of European Professional Football (i.e. soccer) matches, players, and teams.
 
 ### Dataset manipulation
 
-SQLite visualization tool: DB Browser for SQLite --> Export to CSV
+#### The easy way to do this
+Because I've manipulated all of this data already, I've made it easy for you. Make sure Postgres is running, then download the `data.zip` file from this repo. Navigate to the file directory and run: 
 
-Postgres running locally
+```psql your_created_DB_name < soccer_db.sql```
 
-Homebrew pgloader
+#### From scratch
+I downloaded the data from Kaggle, which gave me a `.sqlite` file. 
 
-psql 
+I then used [DB Browser for SQLite](http://sqlitebrowser.org/) to visualize the data structures. I also used this tool to export all of the tables to CSV - convenient if you'd rather explore the data in Excel.
 
-pgloader export sqlite db to soccer
+I ensured that I had [Postgres installed and running locally](https://postgresapp.com/).
+* Create a new Postgres DB for your data: `createdb soccer`
 
-SQLite DB
+From there, I used [pgloader](https://github.com/dimitri/pgloader) to migrate the data from my SQLite DB to Postgres.
+* Install pgloader: `brew install pgloader`
+* Export your SQLite DB to Postgres: `pgloader ./path/to/sqlite.db postgresql:///soccer`
 
-pgloder played nice with all of the tables except 'players'
+pgloader played nice with all of the DB tables except 'players'. For players, I went into the 
 
 changed csv data in height column to be an integer, deleted top row of csv
 
@@ -65,11 +70,15 @@ pg_dump soccer > soccer_db.sql
 
 now the soccer postgres db was running on my local machine
 
-included all of these files in the zipped 'data' directory
+The `.sql` dump, `.sqlite` DB, and all of the `.csv` files are included in `data.zip`.
 
-### Linking to Mode
+### Linking to your BI tool
+*Note that some of these instructions may be specific to [Mode Analytics](https://modeanalytics.com/), the BI tool I was testing.*
+
+Steps to link to Mode.
 
 ## Testing the BI tool's capabilities
+Now that you have your BI tool layered over your Postgres DB, you're ready to play with the data! Some sample tests you could run:
 
 Things we're testing:
 - SQL querying ease and speed
@@ -82,8 +91,5 @@ Things we're testing:
 - Forecasting 
   - Regression analysis / Python, etc.
   
-## Results 
-Note that these are from Mode:
-- time from queries
-- paste visualizations
-- etc.
+## Notes
+I created this guide because there I just went through this process and I had to compile information from a lot of different sources to figure all of this out. If it is helpful to you, drop me a line!
