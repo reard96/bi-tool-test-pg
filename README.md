@@ -64,7 +64,7 @@ I then used [this gist](https://gist.github.com/nepsilon/f2937fe10fe8b0efc0cc) t
 
 Once my Postgres DB was built, I ran `pg_dump` [to dump the results into a *`.sql`* file](https://www.postgresql.org/docs/9.1/static/app-pgdump.html).
 
-The SQL dump, SQLite DB, and all of the CSV files are included in `data.zip`.
+The SQL dump, SQLite DB, and all of the CSV files are included in *`data.zip`*.
 
 ### Linking to your BI tool
 *Note that some of these instructions may be specific to [Mode Analytics](https://modeanalytics.com/), the BI tool I was testing.*
