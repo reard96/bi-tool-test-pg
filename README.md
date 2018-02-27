@@ -1,4 +1,4 @@
-# Business Intelligence Tool Test Setup
+# Business Intelligence Tool Test
 #### How to set up a locally hosted Postgres DB populated with useful public data, then connect a BI tool to your DB.
 
 ## Business Context
